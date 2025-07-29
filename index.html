@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WanderIA - Explore le monde</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="overlay">
+      <h1 class="brand">WanderIA</h1>
+      <p class="slogan">Mystères, aventures et beauté à portée de clic</p>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="lieux.html">Destinations</a></li>
+          <li><a href="profil.html">Profil</a></li>
+          <li><a href="connexion.html">Connexion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="discover">
+      <h2>Explore autour de toi</h2>
+      <button onclick="getLocation()">Activer ma géolocalisation</button>
+      <div id="result"></div>
+      <div id="map"></div>
+    </section>
+
+    <section class="highlight">
+      <h2>Nos coups de cœur</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="assets/img/eiffel.jpg" alt="Tour Eiffel">
+          <div class="card-content">
+            <h3>Tour Eiffel</h3>
+            <p>Monument emblématique de Paris</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/img/louvre.jpg" alt="Louvre">
+          <div class="card-content">
+            <h3>Musée du Louvre</h3>
+            <p>Le plus grand musée d'art du monde</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/img/notre-dame.jpg" alt="Notre-Dame">
+          <div class="card-content">
+            <h3>Notre-Dame</h3>
+            <p>Chef-d'oeuvre gothique incontournable</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 WanderIA. Tous droits réservés.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

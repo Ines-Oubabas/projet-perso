@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WanderIA - Connexion</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .login-container {
+      max-width: 400px;
+      margin: 4em auto;
+      background: #fff;
+      padding: 2em;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-container h2 {
+      margin-bottom: 1em;
+      color: #004d7a;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      background: #0099cc;
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .login-container button:hover {
+      background: #0077a3;
+    }
+
+    .login-container p {
+      text-align: center;
+      margin-top: 1em;
+      font-size: 0.9rem;
+    }
+
+    .login-container a {
+      color: #0099cc;
+      text-decoration: none;
+    }
+
+    .login-container a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero small">
+    <div class="overlay">
+      <h1 class="brand">Connexion</h1>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="lieux.html">Destinations</a></li>
+          <li><a href="profil.html">Profil</a></li>
+          <li><a href="connexion.html" class="active">Connexion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="login-container">
+      <h2>Se connecter</h2>
+      <form>
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Mot de passe" required />
+        <button type="submit">Connexion</button>
+      </form>
+      <p>Pas encore de compte ? <a href="#" onclick="toggleRegister()">Inscription</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 WanderIA. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    function toggleRegister() {
+      const container = document.querySelector('.login-container');
+      container.innerHTML = `
+        <h2>Créer un compte</h2>
+        <form>
+          <input type="text" placeholder="Nom complet" required />
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Mot de passe" required />
+          <button type="submit">Inscription</button>
+        </form>
+        <p>Déjà inscrit ? <a href="connexion.html">Connexion</a></p>
+      `;
+    }
+  </script>
+</body>
+</html>

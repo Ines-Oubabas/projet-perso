@@ -1,0 +1,32 @@
+[
+  {
+    "nom": "Tour Eiffel",
+    "latitude": 48.8584,
+    "longitude": 2.2945,
+    "description": "Monument emblématique de Paris."
+  },
+  {
+    "nom": "Musée du Louvre",
+    "latitude": 48.8606,
+    "longitude": 2.3376,
+    "description": "Le musée le plus visité au monde."
+  },
+  {
+    "nom": "Cathédrale Notre-Dame",
+    "latitude": 48.853,
+    "longitude": 2.3499,
+    "description": "Chef-d’œuvre gothique au cœur de Paris."
+  },
+  {
+    "nom": "Montmartre",
+    "latitude": 48.8867,
+    "longitude": 2.3431,
+    "description": "Quartier artistique avec vue panoramique sur Paris."
+  },
+  {
+    "nom": "Château de Versailles",
+    "latitude": 48.8049,
+    "longitude": 2.1204,
+    "description": "Ancienne résidence royale aux jardins somptueux."
+  }
+]
