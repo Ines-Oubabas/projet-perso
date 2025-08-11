@@ -1,4 +1,3 @@
-/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -6,174 +5,198 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f4f7fa;
-  color: #222;
-  line-height: 1.6;
-  overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  background-color: #111;
 }
 
-/* HERO */
 .hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
-    url('../assets/img/hero-desert.jpg') no-repeat center center/cover;
-  height: 100vh;
+  height: 90vh;
+  width: 97vw;
+  margin: 2vh auto;
+  background: url('../assets/img/fontindex.jpg') center/cover no-repeat;
+  border-radius: 30px;
   position: relative;
+  box-shadow:
+    inset -8px -8px 16px rgba(255, 255, 255, 0.6),
+    inset 8px 8px 16px rgba(0, 0, 0, 0.2),
+    8px 8px 16px rgba(0, 0, 0, 0.2),
+    -8px -8px 16px rgba(255, 255, 255, 0.3);
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  color: #fff;
+  align-items: center;
+  overflow: hidden;
 }
 
-.overlay {
-  padding: 2rem;
-  backdrop-filter: blur(3px);
+
+.main-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* sépare logo et liens */
+  align-items: center;
+  padding: 1rem 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
 
-.brand {
-  font-size: 3rem;
-  letter-spacing: 2px;
-  font-weight: 700;
-  margin-bottom: 0.5em;
-}
-
-.slogan {
-  font-size: 1.2rem;
-  margin-bottom: 1.5em;
+.main-nav .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
 }
 
 .main-nav ul {
   list-style: none;
   display: flex;
-  gap: 2em;
-  justify-content: center;
-  margin-top: 1em;
+  gap: 2rem;
+  margin: 0;
 }
 
-.main-nav a {
-  color: #fff;
+.main-nav ul li a {
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem;
-  position: relative;
+  color: black;
+  font-weight: 500;
 }
 
-.main-nav a::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 2px;
-  background: #fdd835;
-  transition: width 0.3s;
-  position: absolute;
-  bottom: -4px;
-  left: 0;
+.main-nav ul li a:hover {
+  text-decoration: underline;
 }
 
-.main-nav a:hover::after {
-  width: 100%;
-}
-
-/* DISCOVER */
-.discover {
-  padding: 4rem 2rem;
-  text-align: center;
-  background: #fff;
-}
-
-.discover h2 {
-  font-size: 2rem;
-  margin-bottom: 1em;
-  color: #004d7a;
-}
-
-button {
-  padding: 12px 25px;
-  background-color: #0099cc;
+.btn-connexion {
+  background-color: #ff8754;
+  padding: 8px 16px;
+  border-radius: 20px;
   color: white;
+  font-weight: bold;
+}
+
+
+.hero-content {
+  text-align: center;
+  margin-top: 15vh;
+}
+
+.cta {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background-color: #ffa500;
   border: none;
-  border-radius: 30px;
+  border-radius: 25px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s;
 }
 
-button:hover {
-  background-color: #0077a3;
-  transform: scale(1.05);
-}
-
-#map {
-  margin: 2em auto;
-  height: 400px;
-  width: 100%;
-  max-width: 800px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* HIGHLIGHT */
-.highlight {
-  background: #f5faff;
-  padding: 4rem 2rem;
+/* Espacement entre sections */
+.popular-destinations {
+  margin: 9rem auto;
+  padding: 8rem 2.5rem;
+  max-width: 95%;
+  border-radius: 20px;
   text-align: center;
-}
+  background: url('../assets/img/fontlieux.png') center/cover no-repeat;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+} 
 
-.highlight h2 {
-  font-size: 2rem;
+/* Titre centré et stylé */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
   margin-bottom: 2rem;
-  color: #004d7a;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-.cards {
+/* Conteneur des cartes 
+.destination-carousel {
   display: flex;
-  flex-wrap: wrap;
+  gap: 1.5rem;
   justify-content: center;
-  gap: 2em;
-}
+  flex-wrap: wrap;
+} */
 
-.card {
-  background: #fff;
+/* Style des cartes 
+.destination-card {
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
-  width: 280px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  transition: transform 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+  width: 230px;
+  backdrop-filter: blur(10px);
 }
 
-.card:hover {
-  transform: translateY(-10px);
+.destination-card:hover {
+  transform: translateY(-5px) scale(1.02);
 }
 
-.card img {
+.destination-card img {
   width: 100%;
-  height: 180px;
+  height: 160px;
   object-fit: cover;
 }
 
-.card-content {
+.destination-card h3 {
   padding: 1rem;
-  text-align: left;
+  font-size: 1.1rem;
+  color: #fff;
+} */
+
+.popular-destinations {
+  padding: 4rem 2rem;
+  background: url('../assets/img/fontlieux.png') center/cover no-repeat;
+  position: relative;
 }
 
-.card-content h3 {
-  font-size: 1.2rem;
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
-}
-
-.card-content p {
-  font-size: 0.95rem;
-  color: #555;
-}
-
-/* FOOTER */
-footer {
-  background-color: #004d7a;
-  color: white;
+.section-title {
   text-align: center;
-  padding: 1.5em 0;
-  font-size: 0.95rem;
-  margin-top: 3em;
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 2rem;
+  animation: scroll 25s linear infinite;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-track li {
+  flex: 0 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.carousel-track img {
+  width: 300px;
+  height: 200px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+  transform: perspective(800px) rotateY(-3deg);
+}
+
+/* Animation défilement horizontal */
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Pause au survol */
+.carousel-container:hover .carousel-track {
+  animation-play-state: paused;
 }

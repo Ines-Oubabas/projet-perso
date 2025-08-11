@@ -1,69 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WanderIA - Explore le monde</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WanderIA - Explore le monde autrement</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header class="hero">
     <div class="overlay">
-      <h1 class="brand">WanderIA</h1>
-      <p class="slogan">Mystères, aventures et beauté à portée de clic</p>
       <nav class="main-nav">
+        <div class="logo">WanderIA</div>
         <ul>
           <li><a href="index.html">Accueil</a></li>
           <li><a href="lieux.html">Destinations</a></li>
-          <li><a href="profil.html">Profil</a></li>
-          <li><a href="connexion.html">Connexion</a></li>
+          <li><a href="profil.html">À propos</a></li>
+          <li><a href="connexion.html" class="btn-connexion">Connexion</a></li>
         </ul>
-      </nav>
+      </nav>      
+      <div class="hero-content">
+        <h1>Voyage loin, découvre-toi</h1>
+        <p>Explore le monde avec intelligence, beauté et authenticité</p>
+        <button onclick="checkLogin()" class="cta">Explorer autour de moi</button>
+      </div>
     </div>
   </header>
-
-  <main>
-    <section class="discover">
-      <h2>Explore autour de toi</h2>
-      <button onclick="getLocation()">Activer ma géolocalisation</button>
-      <div id="result"></div>
-      <div id="map"></div>
-    </section>
-
-    <section class="highlight">
-      <h2>Nos coups de cœur</h2>
-      <div class="cards">
-        <div class="card">
-          <img src="assets/img/eiffel.jpg" alt="Tour Eiffel">
-          <div class="card-content">
-            <h3>Tour Eiffel</h3>
-            <p>Monument emblématique de Paris</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="assets/img/louvre.jpg" alt="Louvre">
-          <div class="card-content">
-            <h3>Musée du Louvre</h3>
-            <p>Le plus grand musée d'art du monde</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="assets/img/notre-dame.jpg" alt="Notre-Dame">
-          <div class="card-content">
-            <h3>Notre-Dame</h3>
-            <p>Chef-d'oeuvre gothique incontournable</p>
-          </div>
-        </div>
+<!--
+  <section class="popular-destinations">
+    <h2 class="section-title">Destinations Populaires</h2>
+    <div class="destination-carousel">
+      <div class="destination-card">
+        <img src="assets/img/lieu1.png" alt="Paris">
+        <h3>Paris</h3>
       </div>
-    </section>
-  </main>
+      <div class="destination-card">
+        <img src="assets/img/lieu2.png" alt="New York">
+        <h3>New York</h3>
+      </div>
+      <div class="destination-card">
+        <img src="assets/img/lieu3.jpg" alt="Tokyo">
+        <h3>Tokyo</h3>
+      </div>
+      <div class="destination-card">
+        <img src="assets/img/lieu4.png" alt="Cape Town">
+        <h3>Cape Town</h3>
+      </div>
+      <div class="destination-card">
+        <img src="assets/img/lieu5.jpg" alt="Rome">
+        <h3>Rome</h3>
+      </div>
+    </div>
+  </section>  
+-->
+<section class="popular-destinations">
+  <h2 class="section-title">Destinations Populaires</h2>
+  <div class="carousel-container">
+    <ul class="carousel-track">
+      <li><img src="assets/img/lieu1.png" alt="Destination 1"></li>
+      <li><img src="assets/img/lieu2.png" alt="Destination 2"></li>
+      <li><img src="assets/img/lieu3.jpg" alt="Destination 3"></li>
+      <li><img src="assets/img/lieu4.png" alt="Destination 4"></li>
+      <li><img src="assets/img/lieu5.jpg" alt="Destination 5"></li>
+    </ul>
+  </div>
+</section>
+
 
   <footer>
     <p>&copy; 2025 WanderIA. Tous droits réservés.</p>
   </footer>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/scriptindex.js"></script>
 </body>
 </html>
