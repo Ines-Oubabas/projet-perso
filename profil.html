@@ -1,70 +1,110 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WanderIA - Mon Profil</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header class="hero small">
-    <div class="overlay">
-      <h1 class="brand">Mon Profil</h1>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="lieux.html">Destinations</a></li>
-          <li><a href="profil.html" class="active">Profil</a></li>
-          <li><a href="connexion.html">Connexion</a></li>
-        </ul>
-      </nav>
+  <!-- HERO + NAVBAR GLASS -->
+  <header class="hero">
+    <img class="hero-bg" src="assets/img/fontindex.jpg" alt="Bannière WanderIA" />
+
+    <nav class="nav glass" aria-label="Navigation principale">
+      <a href="index.html" class="brand">WanderIA</a>
+      <ul class="nav-list" id="mainNav">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="lieux.html">Destinations</a></li>
+        <li><a href="profil.html">Profil</a></li>
+      </ul>
+      <a href="connexion.html" class="btn-pill" id="authBtn">Connexion</a>
+    </nav>
+
+    <div class="hero-content">
+      <h1>Mon Profil</h1>
     </div>
   </header>
 
-  <main class="discover">
-    <section class="profil">
-      <img src="assets/icons/avatar.png" alt="Avatar" class="avatar">
-      <h3>Bonjour, Ines</h3>
-      <p>Voyages effectués : <strong>7</strong></p>
-      <p>Lieux favoris : Tour Eiffel, Mont Fuji, Kyoto</p>
-
-      <div class="badges">
-        <span class="badge">🌍 Globe-trotteuse</span>
-        <span class="badge">📸 Exploratrice</span>
-        <span class="badge">⭐ 5+ lieux notés</span>
+  <!-- CONTENU PROFIL -->
+  <main class="section">
+    <!-- Carte profil -->
+    <article class="card" style="max-width:780px;margin:0 auto 20px;">
+      <div class="card__body" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+        <img src="assets/icons/avatar.png" alt="Avatar" width="84" height="84" style="border-radius:50%;border:1px solid var(--border);">
+        <div style="flex:1 1 260px;">
+          <h3 class="card__title" style="margin-bottom:6px;">Bonjour, <span id="userName">Ines</span></h3>
+          <p class="card__desc">Bienvenue sur votre espace voyage.</p>
+        </div>
+        <button id="logoutBtn" class="btn-pill" style="padding:10px 14px;">Se déconnecter</button>
       </div>
-    </section>
-
-    <section class="highlight">
-      <h2>Historique des lieux visités</h2>
-      <div class="cards">
-        <div class="card">
-          <img src="assets/img/eiffel.jpg" alt="Tour Eiffel">
-          <div class="card-content">
-            <h3>Tour Eiffel</h3>
-            <p>Visité le 14 avril 2025</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="assets/img/kyoto.jpg" alt="Kyoto">
-          <div class="card-content">
-            <h3>Kyoto</h3>
-            <p>Visité le 22 mai 2025</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="assets/img/fuji.jpg" alt="Mont Fuji">
-          <div class="card-content">
-            <h3>Mont Fuji</h3>
-            <p>Visité le 9 juin 2025</p>
-          </div>
-        </div>
+      <div class="card__body" style="display:flex;gap:18px;flex-wrap:wrap;">
+        <span class="card__badge">🌍 Globe-trotteuse</span>
+        <span class="card__badge">📸 Exploratrice</span>
+        <span class="card__badge">⭐ 5+ lieux notés</span>
       </div>
-    </section>
+    </article>
+
+    <!-- Historique des lieux visités -->
+    <h2 class="section-title" style="margin:18px 0 22px;">Historique des lieux visités</h2>
+    <div class="grid">
+      <article class="card">
+        <div class="card__media">
+          <img src="assets/img/lieu1.png" alt="Lieu visité 1">
+          <span class="card__badge">Ville</span>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Tour Eiffel</h3>
+          <p class="card__desc">Visité le 14 avril 2025</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__media">
+          <img src="assets/img/lieu2.png" alt="Lieu visité 2">
+          <span class="card__badge">Culture</span>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Kyoto</h3>
+          <p class="card__desc">Visité le 22 mai 2025</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__media">
+          <img src="assets/img/lieu3.jpg" alt="Lieu visité 3">
+          <span class="card__badge">Nature</span>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Mont Fuji</h3>
+          <p class="card__desc">Visité le 9 juin 2025</p>
+        </div>
+      </article>
+    </div>
   </main>
 
   <footer>
     <p>&copy; 2025 WanderIA. Tous droits réservés.</p>
   </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script>
+    // Afficher le prénom depuis le "pseudo-login"
+    (function(){
+      const user = JSON.parse(localStorage.getItem('wanderia:user') || 'null');
+      const nameEl = document.getElementById('userName');
+      if (user?.name && nameEl) nameEl.textContent = user.name;
+
+      // Déconnexion simple
+      const logout = document.getElementById('logoutBtn');
+      if (logout) {
+        logout.addEventListener('click', ()=>{
+          localStorage.removeItem('wanderia:user');
+          location.href = 'index.html';
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

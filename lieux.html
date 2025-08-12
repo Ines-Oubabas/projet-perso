@@ -1,98 +1,49 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WanderIA - Destinations</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header class="hero small">
-    <div class="overlay">
-      <h1 class="brand">Destinations</h1>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="lieux.html" class="active">Destinations</a></li>
-          <li><a href="profil.html">Profil</a></li>
-          <li><a href="connexion.html">Connexion</a></li>
-        </ul>
-      </nav>
+  <!-- HERO + NAVBAR GLASS -->
+  <header class="hero">
+    <img class="hero-bg" src="assets/img/fontindex.jpg" alt="Bannière WanderIA" />
+
+    <nav class="nav glass" aria-label="Navigation principale">
+      <a href="index.html" class="brand">WanderIA</a>
+      <ul class="nav-list" id="mainNav">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="lieux.html">Destinations</a></li>
+        <li><a href="profil.html">Profil</a></li>
+      </ul>
+      <a href="connexion.html" class="btn-pill" id="authBtn">Connexion</a>
+    </nav>
+
+    <div class="hero-content">
+      <h1>Destinations</h1>
     </div>
   </header>
 
-  <main class="discover">
-    <h2>Filtrer par type</h2>
-    <div class="filters">
-      <button class="filter-btn" data-type="all">Tous</button>
-      <button class="filter-btn" data-type="culture">Culture</button>
-      <button class="filter-btn" data-type="nature">Nature</button>
-      <button class="filter-btn" data-type="ville">Ville</button>
+  <!-- SECTION FILTRES + GRILLE -->
+  <main class="section">
+    <div class="filters" id="filters">
+      <button class="filter-pill active" data-type="all">Tous</button>
+      <button class="filter-pill" data-type="Culture">Culture</button>
+      <button class="filter-pill" data-type="Nature">Nature</button>
+      <button class="filter-pill" data-type="Ville">Ville</button>
     </div>
 
-    <div class="cards" id="destination-list">
-      <!-- Rempli dynamiquement par JS -->
-    </div>
+    <div class="grid" id="destGrid" aria-live="polite"></div>
   </main>
 
   <footer>
     <p>&copy; 2025 WanderIA. Tous droits réservés.</p>
   </footer>
 
-  <script>
-    const destinations = [
-      {
-        nom: "Tour Eiffel",
-        type: "ville",
-        img: "assets/img/eiffel.jpg",
-        description: "Symbole de Paris."
-      },
-      {
-        nom: "Mont Blanc",
-        type: "nature",
-        img: "assets/img/mont-blanc.jpg",
-        description: "Sommet majestueux des Alpes."
-      },
-      {
-        nom: "Pyramides d'Egypte",
-        type: "culture",
-        img: "assets/img/pyramide.jpg",
-        description: "Merveille antique désertique."
-      },
-      {
-        nom: "Kyoto",
-        type: "culture",
-        img: "assets/img/kyoto.jpg",
-        description: "Temples et traditions du Japon."
-      }
-    ];
-
-    const container = document.getElementById('destination-list');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-
-    function displayDestinations(type = "all") {
-      container.innerHTML = "";
-      const filtres = type === "all" ? destinations : destinations.filter(d => d.type === type);
-      filtres.forEach(dest => {
-        container.innerHTML += `
-          <div class="card">
-            <img src="${dest.img}" alt="${dest.nom}">
-            <div class="card-content">
-              <h3>${dest.nom}</h3>
-              <p>${dest.description}</p>
-            </div>
-          </div>`;
-      });
-    }
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const type = btn.getAttribute('data-type');
-        displayDestinations(type);
-      });
-    });
-
-    window.onload = () => displayDestinations();
-  </script>
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/destinations.js"></script>
 </body>
 </html>

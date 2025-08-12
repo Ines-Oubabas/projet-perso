@@ -1,32 +1,138 @@
 [
   {
+    "id": "paris_tour_eiffel",
+    "pays": "France",
+    "ville": "Paris",
     "nom": "Tour Eiffel",
-    "latitude": 48.8584,
-    "longitude": 2.2945,
-    "description": "Monument emblématique de Paris."
+    "categories": ["Ville", "Culture"],
+    "latitude": 48.85837,
+    "longitude": 2.29448,
+    "cover": "assets/img/lieu1.png",
+    "galerie": ["assets/img/lieu1.png", "assets/img/lieu3.jpg"],
+    "resume": "Symbole de Paris, vue panoramique sur la capitale.",
+    "description": "Monument emblématique de Paris.",
+    "prix": "€€",
+    "ouvert": "09:00–23:45",
+    "duree": "1–2 h",
+    "tags": ["vue", "monument", "famille"],
+    "accessibilite": { "fauteuil": true, "poussette": true, "audioGuide": true },
+    "gratuit": false,
+    "noteMoy": 4.6,
+    "avis": [
+      { "user": "Nadia", "note": 5, "texte": "Magique au coucher de soleil.", "date": "2025-04-05", "photos": [] },
+      { "user": "Samir", "note": 4, "texte": "File un peu longue mais la vue vaut le coup.", "date": "2025-03-18" }
+    ],
+    "proximite": [
+      { "type": "cafe", "nom": "Le Champ de Mars", "distance_m": 250 },
+      { "type": "musee", "nom": "Musée du Quai Branly", "distance_m": 700 }
+    ]
   },
   {
+    "id": "paris_louvre",
+    "pays": "France",
+    "ville": "Paris",
     "nom": "Musée du Louvre",
+    "categories": ["Culture", "Musée"],
     "latitude": 48.8606,
     "longitude": 2.3376,
-    "description": "Le musée le plus visité au monde."
+    "cover": "assets/img/lieu2.png",
+    "galerie": ["assets/img/lieu2.png"],
+    "resume": "Le musée le plus visité au monde.",
+    "description": "Le musée le plus visité au monde.",
+    "prix": "€€",
+    "ouvert": "09:00–18:00 (fermé le mardi)",
+    "duree": "2–4 h",
+    "tags": ["art", "histoire", "iconique"],
+    "accessibilite": { "fauteuil": true, "poussette": true, "audioGuide": true },
+    "gratuit": false,
+    "noteMoy": 4.7,
+    "avis": [
+      { "user": "Alya", "note": 5, "texte": "Collections incroyables, prévoir du temps !", "date": "2025-05-02" }
+    ],
+    "proximite": [
+      { "type": "jardin", "nom": "Jardin des Tuileries", "distance_m": 200 },
+      { "type": "metro", "nom": "Palais Royal – Musée du Louvre", "distance_m": 120 }
+    ]
   },
   {
+    "id": "paris_notre_dame",
+    "pays": "France",
+    "ville": "Paris",
     "nom": "Cathédrale Notre-Dame",
+    "categories": ["Culture", "Patrimoine"],
     "latitude": 48.853,
     "longitude": 2.3499,
-    "description": "Chef-d’œuvre gothique au cœur de Paris."
+    "cover": "assets/img/lieu3.jpg",
+    "galerie": ["assets/img/lieu3.jpg"],
+    "resume": "Chef-d’œuvre gothique au cœur de Paris.",
+    "description": "Chef-d’œuvre gothique au cœur de Paris.",
+    "prix": "€",
+    "ouvert": "10:00–18:00 (selon restauration)",
+    "duree": "45–90 min",
+    "tags": ["architecture", "spirituel", "historique"],
+    "accessibilite": { "fauteuil": true, "poussette": true, "audioGuide": false },
+    "gratuit": true,
+    "noteMoy": 4.5,
+    "avis": [
+      { "user": "Marc", "note": 4, "texte": "La façade est splendide, hâte de revoir l’intérieur.", "date": "2025-02-11" }
+    ],
+    "proximite": [
+      { "type": "pont", "nom": "Pont au Double", "distance_m": 150 },
+      { "type": "glace", "nom": "Berthillon", "distance_m": 650 }
+    ]
   },
   {
-    "nom": "Montmartre",
-    "latitude": 48.8867,
-    "longitude": 2.3431,
-    "description": "Quartier artistique avec vue panoramique sur Paris."
+  "id": "paris_montmartre",
+  "pays": "France",
+  "ville": "Paris",
+  "nom": "Montmartre",
+  "categories": ["Ville", "Culture"],
+  "latitude": 48.8867,
+  "longitude": 2.3431,
+  "cover": "assets/img/lieu4.png",
+  "galerie": ["assets/img/lieu4.png"],
+  "resume": "Quartier artistique et vues panoramiques.",
+  "description": "Quartier artistique avec vue panoramique sur Paris.",
+  "prix": "€",
+  "ouvert": "Libre",
+  "duree": "2–3 h",
+  "tags": ["art", "vintage", "panorama", "photo"],
+  "accessibilite": { "fauteuil": false, "poussette": "moyen", "audioGuide": false },
+  "gratuit": true,
+  "noteMoy": 4.4,
+  "avis": [
+    { "user": "Lina", "note": 5, "texte": "Ambiance bohème, parfait pour se perdre dans les ruelles.", "date": "2025-06-01" }
+  ],
+  "proximite": [
+    { "type": "basilique", "nom": "Sacré-Cœur", "distance_m": 300 },
+    { "type": "place", "nom": "Place du Tertre", "distance_m": 180 }
+  ]
   },
   {
+    "id": "versailles_chateau",
+    "pays": "France",
+    "ville": "Versailles",
     "nom": "Château de Versailles",
+    "categories": ["Culture", "Patrimoine"],
     "latitude": 48.8049,
     "longitude": 2.1204,
-    "description": "Ancienne résidence royale aux jardins somptueux."
+    "cover": "assets/img/lieu5.jpg",
+    "galerie": ["assets/img/lieu5.jpg"],
+    "resume": "Palais et jardins royaux somptueux.",
+    "description": "Ancienne résidence royale aux jardins somptueux.",
+    "prix": "€€€",
+    "ouvert": "09:00–18:30 (lu fermé)",
+    "duree": "Half-day",
+    "tags": ["jardins", "palais", "histoire"],
+    "accessibilite": { "fauteuil": true, "poussette": true, "audioGuide": true },
+    "gratuit": false,
+    "noteMoy": 4.8,
+    "avis": [
+      { "user": "Omar", "note": 5, "texte": "Galerie des Glaces incroyable !", "date": "2025-03-20" }
+    ],
+    "proximite": [
+      { "type": "parc", "nom": "Parc de Versailles", "distance_m": 100 },
+      { "type": "gare", "nom": "Versailles Château Rive Gauche", "distance_m": 600 }
+    ]
   }
 ]

@@ -1,44 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login/Register UI</title>
+  <title>WanderIA – Connexion</title>
+  <!-- ⚠️ On ne charge QUE le CSS de la page login -->
   <link rel="stylesheet" href="css/stylecox.css"/>
 </head>
 <body>
   <div class="container">
     <div class="tabs">
-      <button id="loginTab" class="active">Login</button>
-      <button id="registerTab">Register</button>
+      <button id="loginTab" class="active">Se connecter</button>
+      <button id="registerTab">Créer un compte</button>
     </div>
-    <!-- Login Form -->
-    <form id="loginForm" class="form active">
-      <input type="email" placeholder="Email" required value=""/>
-      <input type="password" placeholder="Password" required />
-      <button type="submit" class="btn"><i class="fa fa-sign-in-alt"></i> Login</button>
-      <p class="or">Or continue with</p>
+
+    <!-- Login -->
+    <form id="loginForm" class="form active" autocomplete="on">
+      <input id="loginEmail" type="email" placeholder="Email" required />
+      <input id="loginPassword" type="password" placeholder="Mot de passe" required />
+      <a href="#" class="forgot-link">Mot de passe oublié ?</a>
+      <button type="submit" class="btn">Connexion</button>
+      <p class="or">Ou continuez avec</p>
       <div class="socials">
-        <button class="social">G</button>
-        <button class="social">f</button>
-        <button class="social">t</button>
+        <button type="button" class="social">G</button>
+        <button type="button" class="social">f</button>
+        <button type="button" class="social">t</button>
       </div>
     </form>
-    <!-- Register Form -->
-    <form id="registerForm" class="form">
-      <input type="text" placeholder="Full Name" required />
-      <input type="email" placeholder="Email" required />
-      <input type="password" placeholder="Password" required />
-      <input type="password" placeholder="Confirm Password" required />
-      <button type="submit" class="btn"><i class="fa fa-user-plus"></i> Register</button>
-      <p class="or">Or sign up with</p>
+
+    <!-- Register -->
+    <form id="registerForm" class="form" autocomplete="on">
+      <input id="regName" type="text" placeholder="Nom complet" required />
+      <input id="regEmail" type="email" placeholder="Email" required />
+      <input id="regPassword" type="password" placeholder="Mot de passe" required />
+      <input id="regConfirm" type="password" placeholder="Confirmez le mot de passe" required />
+      <button type="submit" class="btn">S'inscrire</button>
+      <p class="or">Ou inscrivez-vous avec</p>
       <div class="socials">
-        <button class="social">G</button>
-        <button class="social">f</button>
-        <button class="social">t</button>
+        <button type="button" class="social">G</button>
+        <button type="button" class="social">f</button>
+        <button type="button" class="social">t</button>
       </div>
     </form>
   </div>
+
+  <!-- JS onglets + mock login -->
   <script src="js/script.js"></script>
 </body>
 </html>

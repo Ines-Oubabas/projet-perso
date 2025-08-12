@@ -7,69 +7,71 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <!-- HERO + NAVBAR GLASS -->
   <header class="hero">
-    <div class="overlay">
-      <nav class="main-nav">
-        <div class="logo">WanderIA</div>
-        <ul>
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="lieux.html">Destinations</a></li>
-          <li><a href="profil.html">À propos</a></li>
-          <li><a href="connexion.html" class="btn-connexion">Connexion</a></li>
-        </ul>
-      </nav>      
-      <div class="hero-content">
-        <h1>Voyage loin, découvre-toi</h1>
-        <p>Explore le monde avec intelligence, beauté et authenticité</p>
-        <button onclick="checkLogin()" class="cta">Explorer autour de moi</button>
-      </div>
+    <!-- image/vidéo de fond du hero -->
+    <img class="hero-bg" src="assets/img/fontindex.jpg" alt="Bannière WanderIA" />
+
+    <!-- Navbar effet verre -->
+    <nav class="nav glass" aria-label="Navigation principale">
+      <a href="index.html" class="brand">WanderIA</a>
+      <ul class="nav-list" id="mainNav">
+        <li><a href="index.html" aria-current="page">Accueil</a></li>
+        <li><a href="lieux.html">Destinations</a></li>
+        <li><a href="profil.html">Profil</a></li>
+      </ul>
+      <a href="connexion.html" class="btn-pill" id="authBtn">Connexion</a>
+    </nav>
+
+    <!-- Word art (grand mot derrière) -->
+    <div class="hero-word" aria-hidden="true">EXPLORE</div>
+
+    <!-- Contenu hero -->
+    <div class="hero-content">
+      <h1 class="hero-title">Voyage loin, découvre-toi</h1>
+      <p class="hero-subtitle">Explore le monde avec intelligence, beauté et authenticité</p>
+      <button onclick="checkLogin()" class="cta">Explorer autour de moi</button>
+    </div>
+
+    <!-- Chips d’exploration (pays/villes) -->
+    <div class="quick-chips">
+      <ul>
+        <li><button class="chip" data-target="lieux.html?ville=Tokyo"><img src="assets/img/lieu3.jpg" alt=""><span>Tokyo</span></button></li>
+        <li><button class="chip" data-target="lieux.html?ville=Kyoto"><img src="assets/img/lieu4.png" alt=""><span>Kyoto</span></button></li>
+        <li><button class="chip" data-target="lieux.html?ville=Osaka"><img src="assets/img/lieu5.jpg" alt=""><span>Osaka</span></button></li>
+        <li><button class="chip" data-target="lieux.html?ville=Nara"><img src="assets/img/lieu2.png" alt=""><span>Nara</span></button></li>
+      </ul>
     </div>
   </header>
-<!--
-  <section class="popular-destinations">
+
+  <!-- DESTINATIONS POPULAIRES — Coverflow 3D -->
+  <section id="popular3d" class="section">
     <h2 class="section-title">Destinations Populaires</h2>
-    <div class="destination-carousel">
-      <div class="destination-card">
-        <img src="assets/img/lieu1.png" alt="Paris">
-        <h3>Paris</h3>
-      </div>
-      <div class="destination-card">
-        <img src="assets/img/lieu2.png" alt="New York">
-        <h3>New York</h3>
-      </div>
-      <div class="destination-card">
-        <img src="assets/img/lieu3.jpg" alt="Tokyo">
-        <h3>Tokyo</h3>
-      </div>
-      <div class="destination-card">
-        <img src="assets/img/lieu4.png" alt="Cape Town">
-        <h3>Cape Town</h3>
-      </div>
-      <div class="destination-card">
-        <img src="assets/img/lieu5.jpg" alt="Rome">
-        <h3>Rome</h3>
-      </div>
+
+    <div class="cf-stage" id="cfStage" aria-label="Carrousel 3D de destinations">
+      <button class="cf-card" aria-label="Désert"><img src="assets/img/lieu1.png" alt="Désert"></button>
+      <button class="cf-card" aria-label="Montagnes"><img src="assets/img/lieu2.png" alt="Montagnes"></button>
+      <button class="cf-card" aria-label="Village"><img src="assets/img/lieu3.jpg" alt="Village"></button>
+      <button class="cf-card" aria-label="Lagons"><img src="assets/img/lieu4.png" alt="Lagons"></button>
+      <button class="cf-card" aria-label="Aventure"><img src="assets/img/lieu5.jpg" alt="Aventure"></button>
     </div>
-  </section>  
--->
-<section class="popular-destinations">
-  <h2 class="section-title">Destinations Populaires</h2>
-  <div class="carousel-container">
-    <ul class="carousel-track">
-      <li><img src="assets/img/lieu1.png" alt="Destination 1"></li>
-      <li><img src="assets/img/lieu2.png" alt="Destination 2"></li>
-      <li><img src="assets/img/lieu3.jpg" alt="Destination 3"></li>
-      <li><img src="assets/img/lieu4.png" alt="Destination 4"></li>
-      <li><img src="assets/img/lieu5.jpg" alt="Destination 5"></li>
-    </ul>
-  </div>
-</section>
+  </section>
 
-
-  <footer>
+  <footer class="section">
     <p>&copy; 2025 WanderIA. Tous droits réservés.</p>
   </footer>
 
+  <!-- GSAP (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
+
+  <!-- Tes scripts -->
+  <script src="js/main.js"></script>
   <script src="js/scriptindex.js"></script>
+
+  <!-- Animations GSAP de la home -->
+  <script src="js/home-hero.js"></script>
+  <script src="js/home-coverflow.js"></script>
 </body>
 </html>
