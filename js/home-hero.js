@@ -152,3 +152,58 @@
     });
   }
 })();
+
+// ----- deuxieme formulaires -----
+<script>
+  // Témoignages (auto-rotation simple)
+  (function(){
+    const items = [
+      {
+        text: "“WanderIA m’a trouvé des spots incroyables à Tokyo. Simple, beau et intelligent.”",
+        name: "Ines K.", role: "/ Étudiante"
+      },
+      {
+        text: "“Le meilleur site pour planifier un week-end en Europe. J’adore les suggestions IA.”",
+        name: "Yann M.", role: "/ Développeur"
+      },
+      {
+        text: "“Des itinéraires super bien pensés. On gagne un temps fou.”",
+        name: "Aïcha D.", role: "/ Photographe"
+      }
+    ];
+
+    const txt = document.getElementById('tstiText');
+    const name = document.getElementById('tstiName');
+    const role = document.getElementById('tstiRole');
+    const dotsBox = document.getElementById('tstiDots');
+
+    if (!txt || !name || !role || !dotsBox) return;
+
+    let i = 0;
+    items.forEach((_, idx) => {
+      const b = document.createElement('button');
+      b.addEventListener('click', () => { i = idx; render(true); });
+      dotsBox.appendChild(b);
+    });
+
+    function render(jump=false){
+      const dots = dotsBox.querySelectorAll('button');
+      dots.forEach((d,k)=>d.classList.toggle('active', k===i));
+      if (!jump){ txt.style.opacity = 0; name.style.opacity = 0; role.style.opacity = 0; }
+      setTimeout(()=>{
+        txt.textContent = items[i].text;
+        name.textContent = items[i].name;
+        role.textContent = ' ' + items[i].role;
+        txt.style.opacity = 1; name.style.opacity = 1; role.style.opacity = 1;
+      }, jump ? 0 : 180);
+    }
+
+    function next(){ i = (i+1) % items.length; render(); }
+
+    render(true);
+    let auto = setInterval(next, 4500);
+    dotsBox.addEventListener('mouseenter', ()=>clearInterval(auto));
+    dotsBox.addEventListener('mouseleave', ()=>auto = setInterval(next, 4500));
+  })();
+</script>
+

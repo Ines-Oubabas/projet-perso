@@ -108,3 +108,5 @@ if (registerForm) {
 document.querySelectorAll(".social").forEach(btn => {
   btn.addEventListener("click", (e) => e.preventDefault());
 });
+
+

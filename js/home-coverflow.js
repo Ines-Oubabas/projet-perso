@@ -1,141 +1,117 @@
-/* js/home-coverflow.js
-   Coverflow 3D (GSAP + Draggable) pour la section "Destinations Populaires"
-*/
 (() => {
   const stage = document.getElementById('cfStage');
   if (!stage) return;
 
-  const cards = Array.from(stage.querySelectorAll('.cf-card'));
-  if (!cards.length) return;
+  // 1) Récupère toutes tes images existantes dans #cfStage
+  const sources = Array.from(stage.querySelectorAll('.cf-card img'))
+    .map(img => img.getAttribute('src'))
+    .filter(Boolean);
 
-  // ----------- Setup visuel de base (au cas où le CSS n'est pas encore ajouté)
-  gsap.set(stage, { perspective: 1200, transformStyle: 'preserve-3d' });
-  gsap.set(cards, {
-    position: 'relative',
-    width: 'min(320px, 32vw)',
-    aspectRatio: 4 / 5,
-    borderRadius: 16,
-    padding: 0,
-    border: '1px solid var(--border)',
-    background: 'transparent',
-    outline: 'none',
-    overflow: 'hidden',
-    cursor: 'pointer',
-    boxShadow: '0 14px 38px rgba(0,0,0,.35)'
-  });
-  gsap.set(cards.map(c => c.querySelector('img')), {
-    display: 'block',
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover'
-  });
+  if (sources.length === 0) return;
 
-  // ----------- Paramètres coverflow
-  const cfg = {
-    spacing: 240,        // distance horizontale entre cartes
-    rot:  -35,           // rotationY de chaque côté
-    zLift: 180,          // profondeur Z du centre
-    sideZDrop: -260,     // recul des cartes latérales
-    scaleC: 1,           // scale centre
-    scaleS: 0.84,        // scale côtés
-    fadeS: 0.35,         // opacité mini côté
-    ease: 'power3.out',
-    dur: 0.6
+  // 2) Remplace le contenu par 5 slots fixes (immobiles)
+  stage.innerHTML = `
+    <div class="cf-slot left2"><img alt=""></div>
+    <div class="cf-slot left1"><img alt=""></div>
+    <div class="cf-slot center"><img alt=""></div>
+    <div class="cf-slot right1"><img alt=""></div>
+    <div class="cf-slot right2"><img alt=""></div>
+  `;
+
+  const slotL2 = stage.querySelector('.left2 img');
+  const slotL1 = stage.querySelector('.left1 img');
+  const slotC  = stage.querySelector('.center img');
+  const slotR1 = stage.querySelector('.right1 img');
+  const slotR2 = stage.querySelector('.right2 img');
+
+  const btnPrev = document.getElementById('cfPrev');
+  const btnNext = document.getElementById('cfNext');
+
+  const n = sources.length;
+  const mod = (a, b) => ((a % b) + b) % b;
+
+  // Indice de l'image du milieu (courante)
+  let i = Math.floor(n / 2);
+
+  // Alimente les slots. On anime UNIQUEMENT le centre.
+  function fill(animateCenter = true) {
+    // Voisins : mis à jour instantanément (positions fixes, pas d'animation)
+    slotL2.src = sources[mod(i - 2, n)];
+    slotL1.src = sources[mod(i - 1, n)];
+    slotR1.src = sources[mod(i + 1, n)];
+    slotR2.src = sources[mod(i + 2, n)];
+
+    // Centre : crossfade + petit zoom
+    if (!animateCenter) {
+      slotC.style.transition = 'none';
+      slotC.style.opacity = 1;
+      slotC.style.transform = 'scale(1)';
+      slotC.src = sources[mod(i, n)];
+      // force reflow puis réactive la transition pour les prochaines fois
+      void slotC.offsetWidth;
+      slotC.style.transition = '';
+      return;
+    }
+
+    // départ : disparaît un peu
+    slotC.style.opacity = 0;
+    slotC.style.transform = 'scale(0.94)';
+
+    // Attends un tick, change la source, puis fais ré-apparaître
+    setTimeout(() => {
+      slotC.src = sources[mod(i, n)];
+      slotC.style.opacity = 1;
+      slotC.style.transform = 'scale(1)';
+    }, 90);
+  }
+
+  function next(){ i = mod(i + 1, n); fill(true); }
+  function prev(){ i = mod(i - 1, n); fill(true); }
+
+  // Interactions : pause auto, puis reprise
+  const AUTOPLAY_MS = 3000;
+  const RESUME_MS   = 6000;
+  let auto = null, resumeTimer = null;
+
+  const startAuto = () => { if (!auto) auto = setInterval(next, AUTOPLAY_MS); };
+  const stopAuto  = () => { if (auto) { clearInterval(auto); auto = null; } };
+  const pauseThenResume = () => {
+    stopAuto();
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(startAuto, RESUME_MS);
   };
 
-  let idx = 0;            // index "courant" (fractionnel durant le drag)
-  let target = 0;         // snap cible
+  // Boutons
+  btnNext?.addEventListener('click', () => { pauseThenResume(); next(); });
+  btnPrev?.addEventListener('click', () => { pauseThenResume(); prev(); });
 
-  // ----------- Layout réactif
-  function resize() {
-    const w = stage.clientWidth || window.innerWidth;
-    // Ajuste l’espacement et les tailles selon la largeur
-    const s = gsap.utils.clamp(160, 280, w * 0.18);
-    cfg.spacing = gsap.utils.clamp(180, 300, s * 1.3);
-  }
+  // Clic sur les côtés pour avancer/reculer (facultatif)
+  stage.querySelector('.right1')?.addEventListener('click', () => { pauseThenResume(); next(); });
+  stage.querySelector('.left1') ?.addEventListener('click', () => { pauseThenResume(); prev(); });
+  stage.querySelector('.right2')?.addEventListener('click', () => { pauseThenResume(); next(); });
+  stage.querySelector('.left2') ?.addEventListener('click', () => { pauseThenResume(); prev(); });
 
-  // ----------- Rendu d’une position "i" (peut être fractionnelle)
-  function render(i) {
-    cards.forEach((card, k) => {
-      const d = k - i;                             // delta par rapport au centre
-      const ad = Math.abs(d);
+  // Molette & swipe
+  let startX = 0;
+  stage.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaX) + Math.abs(e.deltaY) < 2) return;
+    e.preventDefault();
+    pauseThenResume();
+    (e.deltaY > 0 || e.deltaX > 0) ? next() : prev();
+  }, { passive: false });
 
-      const x = d * cfg.spacing;
-      const z = gsap.utils.mapRange(0, 3, cfg.zLift, cfg.sideZDrop, ad);
-      const r = gsap.utils.clamp(-65, 65, -cfg.rot * Math.sign(d) * Math.min(ad, 1));
-      const s = gsap.utils.mapRange(0, 3, cfg.scaleC, cfg.scaleS, ad);
-      const o = gsap.utils.mapRange(0, 3, 1, cfg.fadeS, ad);
-
-      gsap.to(card, {
-        duration: cfg.dur,
-        x, z, rotationY: r, scale: s, opacity: o,
-        zIndex: 1000 - Math.round(ad * 10),
-        ease: cfg.ease
-      });
-    });
-  }
-
-  // ----------- Drag (inertie simple)
-  const proxy = document.createElement('div');
-  let startIdx = 0;
-  const dragFactor = 1 / cfg.spacing; // translation -> delta index
-
-  Draggable.create(proxy, {
-    type: 'x',
-    trigger: stage,
-    onDragStart() {
-      startIdx = idx;
-      gsap.killTweensOf({}); // stop animations de snap en cours
-    },
-    onDrag() {
-      idx = startIdx - this.x * dragFactor;
-      render(idx);
-    },
-    onDragEnd() {
-      target = Math.round(idx);
-      snapTo(target);
-    }
+  stage.addEventListener('touchstart', e => { startX = e.touches[0].clientX; pauseThenResume(); }, { passive:true });
+  stage.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 30) (dx < 0 ? next() : prev());
   });
 
-  function snapTo(n) {
-    target = gsap.utils.clamp(0, cards.length - 1, n);
-    gsap.to({ val: idx }, {
-      val: target,
-      duration: 0.5,
-      ease: 'power3.out',
-      onUpdate() {
-        idx = this.targets()[0].val;
-        render(idx);
-      }
-    });
-    // remet le proxy à zéro pour le prochain drag
-    gsap.set(proxy, { x: 0 });
-  }
+  // Init + autoplay
+  fill(false);
+  startAuto();
 
-  // ----------- Interactions
-  // Clic sur une carte -> centrage
-  cards.forEach((card, k) => {
-    card.addEventListener('click', () => snapTo(k));
+  // Sécurité quand on revient sur l’onglet
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && !auto) startAuto();
   });
-
-  // Clavier ← →
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft')  snapTo(target - 1);
-    if (e.key === 'ArrowRight') snapTo(target + 1);
-  });
-
-  // Chips (si présentes sur la page) -> centrage approximatif
-  document.querySelectorAll('.quick-chips .chip').forEach((chip, n) => {
-    chip.addEventListener('click', () => snapTo(n));
-  });
-
-  // Resize
-  window.addEventListener('resize', () => {
-    resize();
-    render(idx);
-  });
-
-  // ----------- Init
-  resize();
-  render(idx);
 })();

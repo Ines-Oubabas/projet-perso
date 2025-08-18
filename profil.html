@@ -8,80 +8,141 @@
 </head>
 <body>
   <!-- HERO + NAVBAR GLASS -->
-  <header class="hero">
-    <img class="hero-bg" src="assets/img/fontindex.jpg" alt="Bannière WanderIA" />
+<header class="header-small">
+  <!-- Navbar -->
+  <nav class="nav glass" aria-label="Navigation principale">
+    <a href="index.html" class="brand">WanderIA</a>
+    <ul class="nav-list" id="mainNav">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="lieux.html">Destinations</a></li>
+      <li><a href="profil.html" class="active">Profil</a></li>
+    </ul>
+    <a href="connexion.html" class="btn-pill" id="authBtn">Connexion</a>
+  </nav>
 
-    <nav class="nav glass" aria-label="Navigation principale">
-      <a href="index.html" class="brand">WanderIA</a>
-      <ul class="nav-list" id="mainNav">
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="lieux.html">Destinations</a></li>
-        <li><a href="profil.html">Profil</a></li>
-      </ul>
-      <a href="connexion.html" class="btn-pill" id="authBtn">Connexion</a>
-    </nav>
+  <!-- Titre en dessous de la navbar -->
+  <div class="header-title">
+    <h1>Mon Profil</h1>
+  </div>
+</header>
 
-    <div class="hero-content">
-      <h1>Mon Profil</h1>
-    </div>
-  </header>
 
   <!-- CONTENU PROFIL -->
-  <main class="section">
-    <!-- Carte profil -->
-    <article class="card" style="max-width:780px;margin:0 auto 20px;">
-      <div class="card__body" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
-        <img src="assets/icons/avatar.png" alt="Avatar" width="84" height="84" style="border-radius:50%;border:1px solid var(--border);">
-        <div style="flex:1 1 260px;">
-          <h3 class="card__title" style="margin-bottom:6px;">Bonjour, <span id="userName">Ines</span></h3>
-          <p class="card__desc">Bienvenue sur votre espace voyage.</p>
-        </div>
-        <button id="logoutBtn" class="btn-pill" style="padding:10px 14px;">Se déconnecter</button>
-      </div>
-      <div class="card__body" style="display:flex;gap:18px;flex-wrap:wrap;">
-        <span class="card__badge">🌍 Globe-trotteuse</span>
-        <span class="card__badge">📸 Exploratrice</span>
-        <span class="card__badge">⭐ 5+ lieux notés</span>
-      </div>
-    </article>
-
-    <!-- Historique des lieux visités -->
-    <h2 class="section-title" style="margin:18px 0 22px;">Historique des lieux visités</h2>
-    <div class="grid">
-      <article class="card">
-        <div class="card__media">
-          <img src="assets/img/lieu1.png" alt="Lieu visité 1">
-          <span class="card__badge">Ville</span>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title">Tour Eiffel</h3>
-          <p class="card__desc">Visité le 14 avril 2025</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card__media">
-          <img src="assets/img/lieu2.png" alt="Lieu visité 2">
-          <span class="card__badge">Culture</span>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title">Kyoto</h3>
-          <p class="card__desc">Visité le 22 mai 2025</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card__media">
-          <img src="assets/img/lieu3.jpg" alt="Lieu visité 3">
-          <span class="card__badge">Nature</span>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title">Mont Fuji</h3>
-          <p class="card__desc">Visité le 9 juin 2025</p>
-        </div>
-      </article>
+  <main class="section profile-ig">
+  <!-- En-tête : couverture + avatar + infos -->
+  <section class="u-header card">
+    <div class="u-cover">
+      <img src="assets/img/morkie.jpg" alt="Bannière" />
+      <span class="u-cover-gradient"></span>
     </div>
-  </main>
+
+    <div class="u-header-row">
+      <div class="u-id">
+        <img class="u-avatar" src="assets/icons/utilisateur.png" alt="Avatar">
+        <div>
+          <h2 class="u-name">Bonjour, <span id="userName">Voyageur</span></h2>
+          <p class="u-bio muted">🌍 Globe-trotteur • ✈️ Explorateur</p>
+          <div class="u-badges">
+            <span class="tag">🌍 Globe-Trotter</span>
+            <span class="tag">📸 Explorateur</span>
+            <span class="tag">⭐ 5+ avis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="u-actions">
+        <a href="lieux.html" class="btn-pill ghost">Explorer</a>
+        <button id="logoutBtn" class="btn-pill">Se déconnecter</button>
+      </div>
+    </div>
+
+    <ul class="u-stats">
+      <li><strong>12</strong><span>Lieux</span></li>
+      <li><strong>45</strong><span>Photos</span></li>
+      <li><strong>30</strong><span>Avis</span></li>
+    </ul>
+  </section>
+
+  <!-- “Stories” / Highlights -->
+  <section class="u-highlights">
+    <button class="u-highlight">
+      <img src="assets/img/lieu1.png" alt=""><span>Europe</span>
+    </button>
+    <button class="u-highlight">
+      <img src="assets/img/lieu2.png" alt=""><span>Asie</span>
+    </button>
+    <button class="u-highlight">
+      <img src="assets/img/lieu3.jpg" alt=""><span>Nature</span>
+    </button>
+    <button class="u-highlight">
+      <img src="assets/img/lieu4.png" alt=""><span>Plages</span>
+    </button>
+  </section>
+
+  <!-- Onglets -->
+  <section class="u-tabs card">
+    <nav class="u-tabbar">
+      <button class="u-tab active" data-tab="posts">Publications</button>
+      <button class="u-tab" data-tab="avis">Avis</button>
+      <button class="u-tab" data-tab="carnet">Carnet</button>
+    </nav>
+
+    <div class="u-panels">
+      <!-- Publications (grille style Instagram) -->
+      <div class="u-panel active" id="posts">
+        <div class="u-grid">
+          <article class="u-post" data-title="Tour Eiffel" data-date="14 avr. 2025">
+            <img src="assets/img/lieu1.png" alt="Tour Eiffel">
+            <span class="u-overlay"><span>Tour Eiffel</span></span>
+          </article>
+
+          <article class="u-post" data-title="Kyoto" data-date="22 mai 2025">
+            <img src="assets/img/lieu2.png" alt="Kyoto">
+            <span class="u-overlay"><span>Kyoto</span></span>
+          </article>
+
+          <article class="u-post" data-title="Mont Fuji" data-date="9 juin 2025">
+            <img src="assets/img/lieu3.jpg" alt="Mont Fuji">
+            <span class="u-overlay"><span>Mont Fuji</span></span>
+          </article>
+
+          <!-- Duplique/ajoute d'autres posts si tu veux -->
+        </div>
+      </div>
+
+      <!-- Avis -->
+      <div class="u-panel" id="avis">
+        <p class="muted">Aucun avis pour l’instant. Donne ton avis sur une destination ⭐</p>
+      </div>
+
+      <!-- Carnet -->
+      <div class="u-panel" id="carnet">
+        <div class="card box">
+          <h3 style="margin:0 0 8px">Carnet de voyage</h3>
+          <p class="muted">Écris ici tes souvenirs, astuces, itinéraires…</p>
+          <textarea rows="6" placeholder="Mon plus beau souvenir de Kyoto…"></textarea>
+          <div style="margin-top:8px; display:flex; gap:10px;">
+            <button class="btn-pill">Enregistrer</button>
+            <button class="btn-pill ghost">Exporter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal image -->
+  <div class="u-modal" id="postModal" hidden>
+    <div class="u-modal__overlay"></div>
+    <div class="u-modal__dialog card">
+      <button class="u-modal__close" aria-label="Fermer">×</button>
+      <div class="u-modal__media"><img src="" alt="" id="modalImg"></div>
+      <div class="u-modal__content">
+        <h3 id="modalTitle">Titre</h3>
+        <p class="muted" id="modalDate">Date</p>
+      </div>
+    </div>
+  </div>
+</main>
 
   <footer>
     <p>&copy; 2025 WanderIA. Tous droits réservés.</p>
@@ -90,21 +151,64 @@
   <!-- Scripts -->
   <script src="js/main.js"></script>
   <script>
-    // Afficher le prénom depuis le "pseudo-login"
-    (function(){
-      const user = JSON.parse(localStorage.getItem('wanderia:user') || 'null');
-      const nameEl = document.getElementById('userName');
-      if (user?.name && nameEl) nameEl.textContent = user.name;
+  // Récup du user (nom déjà géré chez toi, on sécurise juste ici aussi)
+  (function(){
+    const user = JSON.parse(localStorage.getItem('wanderia:user') || 'null');
+    const nameEl = document.getElementById('userName');
+    if (user?.name && nameEl) nameEl.textContent = user.name;
+  })();
 
-      // Déconnexion simple
-      const logout = document.getElementById('logoutBtn');
-      if (logout) {
-        logout.addEventListener('click', ()=>{
-          localStorage.removeItem('wanderia:user');
-          location.href = 'index.html';
-        });
-      }
-    })();
-  </script>
+  // Tabs
+  (function(){
+    const tabs = document.querySelectorAll('.u-tab');
+    const panels = document.querySelectorAll('.u-panel');
+    tabs.forEach(tab=>{
+      tab.addEventListener('click', ()=>{
+        const id = tab.dataset.tab;
+        tabs.forEach(t=>t.classList.toggle('active', t===tab));
+        panels.forEach(p=>p.classList.toggle('active', p.id === id));
+      });
+    });
+  })();
+
+  // Modal image
+  (function(){
+    const posts = document.querySelectorAll('.u-post');
+    const modal = document.getElementById('postModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDate = document.getElementById('modalDate');
+    const closeBtn = modal?.querySelector('.u-modal__close');
+    const overlay = modal?.querySelector('.u-modal__overlay');
+
+    function openPost(el){
+      modalImg.src = el.querySelector('img').src;
+      modalTitle.textContent = el.dataset.title || 'Publication';
+      modalDate.textContent = el.dataset.date || '';
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+    function closePost(){
+      modal.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    posts.forEach(p=>p.addEventListener('click', ()=>openPost(p)));
+    closeBtn?.addEventListener('click', closePost);
+    overlay?.addEventListener('click', closePost);
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePost(); });
+  })();
+
+  // Déconnexion (comme chez toi)
+  (function(){
+    const logout = document.getElementById('logoutBtn');
+    if (logout) {
+      logout.addEventListener('click', ()=>{
+        localStorage.removeItem('wanderia:user');
+        location.href = 'index.html';
+      });
+    }
+  })();
+</script>
 </body>
 </html>
