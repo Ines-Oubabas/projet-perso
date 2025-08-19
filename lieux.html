@@ -4,41 +4,82 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WanderIA - Destinations</title>
+
+  <!-- Styles globaux + page lieux -->
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/lieux.css" />
+
+  <!-- Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
 </head>
 <body>
-  <!-- HERO + NAVBAR GLASS -->
+  <!-- HERO + NAVBAR -->
   <header class="hero">
     <img class="hero-bg" src="assets/img/fontindex.jpg" alt="Bannière WanderIA" />
-
     <nav class="nav glass" aria-label="Navigation principale">
       <a href="index.html" class="brand">WanderIA</a>
       <ul class="nav-list" id="mainNav">
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="lieux.html">Destinations</a></li>
+        <li><a aria-current="page" href="lieux.html">Destinations</a></li>
         <li><a href="profil.html">Profil</a></li>
       </ul>
       <a href="connexion.html" class="btn-pill" id="authBtn">Connexion</a>
     </nav>
-
     <div class="hero-content">
-      <h1>Destinations</h1>
+      <h1 class="hero-title">Destinations</h1>
     </div>
   </header>
 
-  <!-- SECTION FILTRES + GRILLE -->
   <main class="section">
-    <div class="filters" id="filters">
-      <button class="filter-pill active" data-type="all">Tous</button>
-      <button class="filter-pill" data-type="Culture">Culture</button>
-      <button class="filter-pill" data-type="Nature">Nature</button>
-      <button class="filter-pill" data-type="Ville">Ville</button>
+    <h1 class="section-title">Découvre les lieux</h1>
+
+    <!-- Barre de recherche -->
+    <div class="search-filter">
+      <div class="input-wrap">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z"/></svg>
+        <input type="text" id="searchInput" placeholder="Rechercher un lieu ou une ville...">
+        <button id="clearSearch" class="clear-btn" aria-label="Effacer">×</button>
+      </div>
+
+      <select id="categoryFilter" aria-label="Filtrer par catégorie">
+        <option value="all">Toutes les catégories</option>
+        <option value="plage">Plage</option>
+        <option value="culture">Culture</option>
+        <option value="musée">Musée</option>
+        <option value="montagne">Montagne</option>
+        <option value="patrimoine">Patrimoine</option>
+        <option value="gastronomie">Gastronomie</option>
+        <option value="ville">Ville</option>
+        <option value="nature">Nature</option>
+        <option value="monument">Monument</option>
+      </select>
+
+      <span id="resultsCount" class="results-count" aria-live="polite"></span>
     </div>
 
-    <div class="grid" id="destGrid" aria-live="polite"></div>
+    <!-- Feed -->
+    <section id="destGrid" class="feed masonry" aria-live="polite"></section>
   </main>
 
-  <footer>
+  <!-- Overlay carte -->
+  <div id="mapOverlay" class="map-overlay" hidden>
+    <div class="map-dialog">
+      <button class="map-close" aria-label="Fermer">×</button>
+      <div id="leafletMap" class="map-canvas" role="region" aria-label="Carte"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
     <p>&copy; 2025 WanderIA. Tous droits réservés.</p>
   </footer>
 
